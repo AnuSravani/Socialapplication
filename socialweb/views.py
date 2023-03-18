@@ -89,6 +89,7 @@ class IndexView(CreateView,ListView):
 
 class ProfileDetailView(TemplateView):
     template_name="profile-detail.html"
+    success_url=reverse_lazy("index")
 
 @method_decorator(decs,name="dispatch")
 class ProfileUpdateView(UpdateView):

@@ -43,7 +43,8 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 
   </div>
   <a href="{%url 'signout'%}" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
-    <img src="/w3images/avatar2.png" class="w3-circle" style="height:23px;width:23px" alt="Signout">
+    <img src="" class="w3-circle" style="height:23px;width:23px" alt="Signout">
+    
   </a>
  </div>
 </div>
@@ -67,18 +68,18 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
         <div class="w3-container">
          <h4 class="w3-center">{{request.user}}</h4>
          {%if request.user.profile.profile_pic%}
-         <p class="w3-center"><img src="{{request.user.profile.profile_pic.url}}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+         <p class="w3-center"><img src="{{request.user.profile.profile_pic.url}}" class="w3-circle" style="height:106px;width:106px" alt="No Pic"></p>
          {%else%}
 
         <p class="w3-center">
-           <img src="/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar">
+           <img src="/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="no profile">
 
         </p>  
          {%endif%}
          <hr>
          <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> {{request.user.profile.bio}}</p>
          <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> Trivandrum, Cochin</p>
-         <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> June 10, 200</p>
+         <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> June 10,2001</p>
          <p><i class="fa fa-image fa-fw w3-margin-right w3-text-theme"></i> <img src="{{request.user.profile.time_line_pic.url}}"  style="height:50px;width:50px" alt="Avatar">
          </p>
         </div>
@@ -180,9 +181,9 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
         
         {%if p.user.profile.profile_pic%}
-        <img src="{{p.user.profile.profile_pic.url}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px">
+        <img src="{{p.user.profile.profile_pic.url}}" alt="No Pic" class="w3-left w3-circle w3-margin-right" style="width:50px">
         {%else%}
-        <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <img src="/w3images/avatar2.png" alt="No Pic" class="w3-left w3-circle w3-margin-right" style="width:60px">
 
         {%endif%}
         <span class="w3-right w3-opacity">{{p.created_date}}</span>
@@ -191,7 +192,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
         {%if request.user == p.user %}
         
         <span class="w3-right w3-opacity"><a href="{%url 'post-delete' p.id%} " class="me-2"><i class="fa fa-trash"></i></a></span>
-        <span class="w3-right w3-opacity"><a href="{%url 'post-edit' p.id%}" >✍Edit</a></span>
+        <span class="w3-right w3-opacity"><a href="{%url 'post-edit' p.id%}" ><button>✍Edit</button></a></span>
         <!-- <span class="w3-right w3-opacity"><a href=""></a><button class="edit-button ghost-button" data-l10n-id="login-item-edit-button"></button></span> -->
 
 
@@ -223,21 +224,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 
             </div><br>
             <div class="section">
-              <!-- <div class="card">
-                  
-                  <h5 class="card-header">
-                      {%if request.user.profile.profile_pic%}
-                      <img src="{{request.user.profile.profile_pic.url}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:40px">
-                      {%else%}
-                      <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-              
-                      {%endif%}
-  
-                      {{request.user}}
-                  </h5>
-                 
-                  
-                </div> -->
+          
           </div>
   
           <!-- answer starting -->
@@ -251,9 +238,9 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
               
               <h5 class="card-header">
                 {%if request.user.profile.profile_pic%}
-                <img src="{{request.user.profile.profile_pic.url}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:40px">
+                <img src="{{request.user.profile.profile_pic.url}}" alt="Profile" class="w3-left w3-circle w3-margin-right" style="width:40px">
                 {%else%}
-                <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                <img src="/w3images/avatar2.png" alt="Profile" class="w3-left w3-circle w3-margin-right" style="width:60px">
         
                 {%endif%}
 
@@ -270,9 +257,9 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
              {%for cmt in p.post_comment%}
              <li class="list-group-item">
               {%if cmt.user.profile.profile_pic%}
-              <img src="{{cmt.user.profile.profile_pic.url}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:40px">
+              <img src="{{cmt.user.profile.profile_pic.url}}" alt="Profile" class="w3-left w3-circle w3-margin-right" style="width:40px">
               {%else%}
-              <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+              <img src="/w3images/avatar2.png" alt="Profile" class="w3-left w3-circle w3-margin-right" style="width:60px">
       
               {%endif%}
               <strong>{{cmt.comment}}</strong>
@@ -319,8 +306,8 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       <div class="w3-card w3-round w3-white w3-center">
         <div class="w3-container">
           <p>Friend Request</p>
-          <img src="/w3images/avatar6.png" alt="Avatar" style="width:50%"><br>
-          <span>Jane Doe</span>
+          <img src="{{request.user.profile.time_line_pic.url}}" alt="Avatar" style="width:50%"><br>
+          <span>{{request.user}}</span>
           <div class="w3-row w3-opacity">
             <div class="w3-half">
               <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>

@@ -30,13 +30,17 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model=UserProfile
         fields=["profile_pic","bio","time_line_pic"]
-        # widgets={
-        #     "bio":forms.TextInput(attrs={"class":"form-control"})
-        # }
+        widgets={
+            "bio":forms.TextInput(attrs={"class":"form-control"})
+        }
     
 class PostForm(forms.ModelForm):
     class Meta:
         model=Posts
         
         fields=["title","description","image",]
+        widgets={
+            "title":forms.TextInput(attrs={"class":"form-control"}),
+            "description":forms.TextInput(attrs={"class":"form-control"})
+        }
 
